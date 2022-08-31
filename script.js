@@ -39,6 +39,13 @@ function addToLibrary(title, author, page, read) {
 // debugging
 console.log(myLibrary);
 
+function deleteFromLibrary(title) {
+  for (var i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].title == title) {
+      myLibrary.splice(i, 1);
+    }
+  }
+}
 
 // Function to update the html with each of the books
 function updateDisplay() {
@@ -65,11 +72,14 @@ function updateDisplay() {
     var read = document.createElement("td")
     read.className = "libraryRead"
     read.innerHTML = myLibrary[i].read
+    var deleteBook = document.createElement("td")
+    deleteBook.className = "deleteBook"
 
     tag.appendChild(title)
     tag.appendChild(author)
     tag.appendChild(page)
     tag.appendChild(read)
+    tag.appendChild(deleteBook)
     libraryDisplay.appendChild(tag);
   }
 
