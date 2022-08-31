@@ -96,16 +96,15 @@ function bookForm() {
     const mainContainer = document.getElementsByClassName("mainContainer")
     // This didnt work var linebreak = document.createElement("br")
     // Create a container for the form
-    const formContainer = document.createElement('div')
-    formContainer.className = "formContainer"
     
     // Create a form
     var formContent = document.createElement("div")  // This could be abstracted
+    formContent.className = "formContainer"
     // formContent.setAttribute("onsubmit","doForm(); return false")
     // Create a title field
     var labelTitle = document.createElement("label")
     labelTitle.htmlFor ="inputTitle"
-    labelTitle.innerHTML = "Title:"
+    labelTitle.innerHTML = "Title"
     formContent.appendChild(labelTitle)
     var inputTitle = document.createElement("input")
     inputTitle.id = "inputTitle"
@@ -115,7 +114,7 @@ function bookForm() {
     // Create a author field
     var labelAuthor = document.createElement("label")
     labelAuthor.htmlFor ="inputAuthor"
-    labelAuthor.innerHTML = "Author:"
+    labelAuthor.innerHTML = "Author"
     formContent.appendChild(labelAuthor);
     var inputAuthor = document.createElement("input");
     inputAuthor.id = "inputAuthor"
@@ -125,7 +124,7 @@ function bookForm() {
     // Create a pages field
     var labelPages = document.createElement("label")
     labelPages.htmlFor ="inputPages"
-    labelPages.innerHTML = "Pages:"
+    labelPages.innerHTML = "Pages"
     formContent.appendChild(labelPages);
     var inputPages = document.createElement("input")
     inputPages.id = "inputPages"
@@ -133,29 +132,30 @@ function bookForm() {
     formContent.appendChild(inputPages);
     formContent.appendChild(document.createElement("br"));
     // Create a read field
+    var spanRead = document.createElement("span")
+    spanRead.id = "spanRead"
     var labelRead = document.createElement("label")
     labelRead.htmlFor ="inputRead"
     labelRead.innerHTML = "Have you read it?"
-    formContent.appendChild(labelRead);
     var inputRead = document.createElement("input")
     inputRead.id = "inputRead"
     inputRead.name = "inputRead"
     inputRead.setAttribute("type", "checkbox");
-    formContent.appendChild(inputRead);
+    spanRead.append(labelRead, inputRead)
+    formContent.appendChild(spanRead)
     formContent.appendChild(document.createElement("br"));
     // Create a submit field
     var submit = document.createElement("span")
     submit.id = "bookFormSubmit"
-    submit.innerHTML = `<button onclick="submitData()"></button>`
+    submit.innerHTML = `<button onclick="submitData()">Add Book</button>`
     formContent.append(submit)
     var cancel = document.createElement("span")
-    cancel.id = "bookFormSubmit"
-    cancel.innerHTML = "<button onclick='clearForm()'></button>"
+    cancel.id = "bookFormCancel"
+    cancel.innerHTML = "<button onclick='clearForm()'>Cancel</button>"
     formContent.append(cancel)
 
     // Attach the form to the container
-    formContainer.append(formContent);
-    mainContainer[0].append(formContainer);
+    mainContainer[0].append(formContent);
   }
 }
 
